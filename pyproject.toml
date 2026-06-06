@@ -13,6 +13,29 @@ dependencies = [
 ]
 readme = "README.md"
 license = {text = "MIT"}
+authors = [
+    {name = "vox4ai", email = "vox4ai@example.com"},
+]
+keywords = ["tts", "tts-plugin", "edgetts", "microsoft", "edge", "voice", "speech", "synthesis"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://github.com/vox4ai/tts-plugin-edgetts"
+Repository = "https://github.com/vox4ai/tts-plugin-edgetts"
+Issues = "https://github.com/vox4ai/tts-plugin-edgetts/issues"
 
 [project.entry-points."tts_bridge.connectors"]
 edgetts = "tts_plugin_edgetts.connector:EdgeTTSConnector"
@@ -25,4 +48,6 @@ dev = [
     "pytest>=9.0.3",
     "pytest-asyncio>=1.3.0",
     "ruff>=0.15.12",
+    "build>=1.0",
+    "twine>=6.0",
 ]

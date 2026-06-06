@@ -1,23 +1,47 @@
 # tts-plugin-edgetts
 
+<p align="center">
+  <img src="https://via.placeholder.com/1200x400/1a1a1a/ffffff?text=tts-plugin-edgetts" alt="tts-plugin-edgetts Banner" width="1200">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/pypi-latest-blue.svg" alt="PyPI version">
+  <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License">
+  <img src="https://img.shields.io/badge/python-3.10%2B-yellow.svg" alt="Python Version">
+  <img src="https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg" alt="Maintained">
+</p>
+
+<p align="center">
+  <a href="https://github.com/vox4ai/tts-plugin-edgetts">Website</a> •
+  <a href="https://github.com/vox4ai/tts-plugin-edgetts/issues">Report Bug</a> •
+  <a href="https://github.com/vox4ai/tts-plugin-edgetts/contributing">Contributing</a>
+</p>
+
+---
+
+## 🚀 Overview
+
 [edge-tts](https://github.com/rany2/edge-tts) (Microsoft Edge TTS) を `tts-plugin-bridge` で利用するためのプラグインです。
 APIキー不要で多言語対応のTTSが利用できます。
 
 ## 📦 インストール
+
 ```bash
 uv add tts-plugin-bridge tts-plugin-edgetts
 ```
 
 ## ⚙️ 前提条件
+
 - インターネット接続 (Microsoft Edge TTSサービスにアクセス)
 - ローカルサーバー不要
 - 再生には [ffplay](https://ffmpeg.org/ffplay.html) または `paplay` / `aplay` がPATHに存在すること
   - ffplay がある場合: ストリーミング再生（受信しながら即時再生）
   - ffplay がない場合: 全取得後に paplay / aplay で再生
 
-## 🧩 使い方
+## 🛠 Usage
 
-### Python API
+### 🧩 Python API
+
 ```python
 from tts_plugin_bridge import TTSSkill
 
@@ -36,7 +60,7 @@ async with TTSSkill(default_engine="edgetts") as skill:
     )
 ```
 
-### CLI（vox4ai 推奨）
+### 🎤 CLI（vox4ai 推奨）
 
 ```bash
 # 直接再生（自動ストリーミング）
@@ -52,7 +76,7 @@ vox4ai save "こんにちは" -e edgetts -o output.mp3
 vox4ai --doctor
 ```
 
-### CLI（tts-plugin-bridge 後方互換）
+### ⌨️ CLI（tts-plugin-bridge 後方互換）
 
 ```bash
 tts-plugin-bridge synthesize "こんにちは" -e edgetts -o output.mp3
@@ -61,6 +85,7 @@ tts-plugin-bridge play "こんにちは" -e edgetts --model ja-JP-KeitaNeural
 ```
 
 ## 🔧 サポートパラメータ
+
 | パラメータ | 型 | 説明 |
 |---|---|---|
 | `speed` | float | 話速 (1.0=標準, >1.0=速い) → edge-tts `rate` に自動変換 |
@@ -72,7 +97,8 @@ tts-plugin-bridge play "こんにちは" -e edgetts --model ja-JP-KeitaNeural
 | `extra.voice` | str | 音声名の直接指定。modelより優先 |
 | `extra.proxy` | str | プロキシURL |
 
-### 主な音声一覧
+### 🗣️ 主な音声一覧
+
 | 音声名 | 性別 | 言語 |
 |---|---|---|
 | `ja-JP-NanamiNeural` | 女性 | 日本語 (デフォルト) |
@@ -82,10 +108,11 @@ tts-plugin-bridge play "こんにちは" -e edgetts --model ja-JP-KeitaNeural
 
 全音声一覧: `uv run edge-tts --list-voices`
 
-### 出力フォーマット
+### 📁 出力フォーマット
+
 MP3 (24kHz, 48kbps, mono)
 
-## 検証環境
+## 🔍 検証環境
 
 - **OS**: Windows 11 + WSL2 (Ubuntu)
 - **確認日**: 2026-05-09
@@ -98,4 +125,5 @@ MP3 (24kHz, 48kbps, mono)
   - 全ユニットテスト 22件 パス
 
 ## 📜 ライセンス
+
 MIT License
