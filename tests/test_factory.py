@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import AsyncMock, patch, MagicMock
-from tts_plugin_bridge import TTSSkill, ConnectorFactory
+from tts_plugin_bridge import ConnectorFactory
+from vox4ai_skill_lib import TTSSkill
 from tts_plugin_edgetts.connector import EdgeTTSConnector
 
 
@@ -41,9 +42,9 @@ async def test_skill_synthesize_with_edgetts():
         async with TTSSkill(default_engine="edgetts") as skill:
             result = await skill.synthesize(text="こんにちは、世界")
 
-    assert result["status"] == "ok"
-    assert result["engine"] == "edgetts"
-    assert result["audio_base64"] is not None
+    assert result.status == "ok"
+    assert result.engine == "edgetts"
+    assert result.audio_base64 is not None
 
 
 @pytest.mark.asyncio
@@ -66,7 +67,7 @@ async def test_skill_synthesize_with_voice_param():
                 volume=1.2,
             )
 
-    assert result["status"] == "ok"
+    assert result.status == "ok"
     call_kwargs = mock_etts.Communicate.call_args
     assert call_kwargs[1]["rate"] == "+50%"
     assert call_kwargs[1]["volume"] == "+20%"
@@ -80,8 +81,8 @@ async def test_skill_unavailable_edgetts():
         async with TTSSkill(default_engine="edgetts") as skill:
             result = await skill.synthesize(text="test")
 
-    assert result["status"] == "error"
-    assert "not reachable" in result["message"]
+    assert result.status == "error"
+    assert "not reachable" in result.message
 
 
 @pytest.mark.asyncio
