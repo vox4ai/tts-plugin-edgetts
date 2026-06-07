@@ -24,6 +24,12 @@ dist/
 # Logs
 *.log
 
+# Coverage
+.coverage
+
+# Generated agent notes
+GEMINI.md
+
 # Environment variables
 .env
 .env.local
